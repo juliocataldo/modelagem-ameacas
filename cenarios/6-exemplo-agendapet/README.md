@@ -1,6 +1,6 @@
 # Cenário 6 — AgendaPet (exemplo resolvido)
 
-> Este é o cenário de **demonstração**. A análise completa está em [`exemplo-resolvido.md`](exemplo-resolvido.md) e mostra o nível de detalhe esperado no trabalho. Seu grupo faz o cenário sorteado, não este.
+> Este é o cenário de **exemplo resolvido**. A análise completa está em [`exemplo-resolvido.md`](exemplo-resolvido.md) e mostra o formato e o nível de detalhe esperados. Os demais cenários (`cenarios/1-` a `5-`) não têm análise publicada, para servirem de prática.
 
 ## Negócio
 **AgendaPet** é o sistema de uma rede de pet shops (banho e tosa). O tutor agenda pelo site, recebe lembretes por SMS e paga na loja. Não há pagamento online.

@@ -1,6 +1,6 @@
 # AgendaPet — modelo de ameaças resolvido (exemplo)
 
-Este documento mostra o **formato e o nível de detalhe** esperados. Sua planilha terá as mesmas partes: DFD, STRIDE, DREAD e Top 5.
+Este documento mostra o **formato e o nível de detalhe** esperados. A planilha ([`exemplo-agendapet.xlsx`](exemplo-agendapet.xlsx)) tem as mesmas partes: DFD, STRIDE, DREAD e Top 5.
 Cada ameaça aponta a **evidência** nos artefatos do cenário.
 
 ## 1. DFD nível 1 e fronteiras de confiança
@@ -62,7 +62,7 @@ flowchart LR
 
 ## 3. DREAD
 
-No trabalho, pontue **no mínimo 8 ameaças** e escolha o Top 5 entre elas, pela média. O exemplo pontua 8 das 12.
+Como regra prática, pontue **pelo menos 8 ameaças** e escolha o Top 5 entre elas, pela média. O exemplo pontua 8 das 12.
 
 | ID | D | R | E | A | D | **Média** | Nível |
 |---|---|---|---|---|---|---|---|

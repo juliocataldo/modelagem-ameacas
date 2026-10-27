@@ -14,7 +14,7 @@ Existem 5 cenários diferentes. Todos os sistemas, dados e pessoas deste reposit
 | 3 | `cenarios/3-ecommerce` | LojaViva, e-commerce (checkout + cartão) |
 | 4 | `cenarios/4-delivery` | EntregaJá, delivery (pedido + rastreio) |
 | 5 | `cenarios/5-portal-academico` | Portal Horizonte, portal acadêmico (notas + matrícula) |
-| 6 | `cenarios/6-exemplo-agendapet` | **Exemplo resolvido** que o professor demonstra em aula. Veja o formato esperado. |
+| 6 | `cenarios/6-exemplo-agendapet` | **Exemplo resolvido.** Veja o formato esperado. |
 
 
 ## Como ler um cenário
@@ -33,11 +33,11 @@ Nada precisa rodar. O `docker-compose.yml` é documentação; **não é necessá
 
 ## O que criar em cima desse material para treinar os seus conhecimentos
 
-1. **Planilha** `entrega/modelo-ameacas.xlsx` preenchida. Abas: DFD, STRIDE, DREAD, Top 5.
+1. **Planilha** `modelo/modelo-ameacas.xlsx` preenchida. Abas: DFD, STRIDE, DREAD, Top 5.
 2. **DFD nível 1** com as fronteiras de confiança (imagem ou PDF; draw.io, Excalidraw, papel fotografado, o que preferir).
 3. **Bônus opcional:** o mesmo modelo no [OWASP Threat Dragon](https://www.threatdragon.com) Entregue o arquivo `.json` exportado.
 
-Critérios e pesos: `entrega/RUBRICA.md`.
+Critérios e pesos: `modelo/RUBRICA.md`.
 
 ## Escala DREAD 
 
