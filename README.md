@@ -1,9 +1,9 @@
-# Modelagem de Ameaças — Trabalho em Grupo (STRIDE + DREAD)
+# Modelagem de Ameaças (STRIDE + DREAD)
 
-Trabalho em grupo (4 a 5 pessoas) para aplicar **STRIDE** e **DREAD** num sistema fictício.
-Cada grupo recebe **um cenário diferente**, sorteado pelo professor. Todos os sistemas, dados e pessoas deste repositório são **fictícios**.
+Trabalho para aplicar **STRIDE** e **DREAD** num sistema fictício.
+Existem 5 cenários diferentes. Todos os sistemas, dados e pessoas deste repositório são **fictícios**.
 
-> Este repositório **não** contém sistemas para atacar. É o desenho de um sistema (arquitetura, API, dados). Seu trabalho é analisar o **design** e prever o que pode dar errado.
+> Este repositório **não** contém sistemas para atacar. É o desenho de um sistema (arquitetura, API, dados). O objetivo é entregar um material para analisar o **design** e prever o que pode dar errado.
 
 ## Cenários
 
@@ -16,7 +16,6 @@ Cada grupo recebe **um cenário diferente**, sorteado pelo professor. Todos os s
 | 5 | `cenarios/5-portal-academico` | Portal Horizonte, portal acadêmico (notas + matrícula) |
 | 6 | `cenarios/6-exemplo-agendapet` | **Exemplo resolvido** que o professor demonstra em aula. Veja o formato esperado. |
 
-Faça **só o cenário que o professor sorteou** para o seu grupo.
 
 ## Como ler um cenário
 
@@ -32,17 +31,17 @@ Cada pasta tem os mesmos artefatos. **Monte o DFD a partir deles**, como faria n
 
 Nada precisa rodar. O `docker-compose.yml` é documentação; **não é necessário subir containers**.
 
-## O que entregar
+## O que criar em cima desse material para treinar os seus conhecimentos
 
-1. **Planilha** `entrega/modelo-ameacas.xlsx` preenchida (uma por grupo). Abas: DFD, STRIDE, DREAD, Top 5.
+1. **Planilha** `entrega/modelo-ameacas.xlsx` preenchida. Abas: DFD, STRIDE, DREAD, Top 5.
 2. **DFD nível 1** com as fronteiras de confiança (imagem ou PDF; draw.io, Excalidraw, papel fotografado, o que preferir).
-3. **Bônus opcional:** o mesmo modelo no [OWASP Threat Dragon](https://www.threatdragon.com) (use "Login com Sessão Local"). Entregue o arquivo `.json` exportado.
+3. **Bônus opcional:** o mesmo modelo no [OWASP Threat Dragon](https://www.threatdragon.com) Entregue o arquivo `.json` exportado.
 
-Critérios e pesos: `entrega/RUBRICA.md`. Prazo: **definido pelo professor em aula**.
+Critérios e pesos: `entrega/RUBRICA.md`.
 
-## Escala DREAD (a mesma do lab OrbitaPay)
+## Escala DREAD 
 
-Nota de 1 a 10 em cada critério: **D**amage, **R**eproducibility, **E**xploitability, **A**ffected users, **D**iscoverability.
+Para contexto acadêmico, nota de 1 a 10 em cada critério: **D**amage, **R**eproducibility, **E**xploitability, **A**ffected users, **D**iscoverability.
 Média: **Baixo** (< 4), **Médio** (4 a 6,9), **Alto** (≥ 7).
 **Pontue no mínimo 8 ameaças** e escolha o seu Top 5 entre elas, pela média.
 **Cada nota precisa de uma justificativa de uma linha.** Nota sem justificativa não conta.
@@ -56,13 +55,13 @@ Média: **Baixo** (< 4), **Médio** (4 a 6,9), **Alto** (≥ 7).
 - Mitigação concreta: "validar no servidor que a conta pertence ao usuário", e não "melhorar a segurança".
 - DREAD é subjetivo. O que vale é a sua justificativa.
 
-## Revise antes (sem nota)
+## Revise antes 
 
 Se ainda não fez, refaça o [lab OrbitaPay](https://github.com/juliocataldo/threat-modeling-lab) para aquecer.
 
 ## Bônus: conteúdo de apoio
 
-Material **opcional e sem nota** para aprofundar (não é o bônus de pontos do Threat Dragon). Quase tudo está em inglês.
+Material **opcional** para aprofundar (não é o bônus de pontos do Threat Dragon). Quase tudo está em inglês.
 
 - **Fundamentos e manifesto:** [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/)
 - **Comece por aqui:**
@@ -74,4 +73,3 @@ Material **opcional e sem nota** para aprofundar (não é o bônus de pontos do 
 ## Combinados
 
 - Tudo aqui é fictício. **Não teste nada contra sistemas reais.**
-- Cada grupo registra o seu próprio modelo.
