@@ -1,0 +1,35 @@
+# Documentação da arquitetura. Não é necessário subir os containers.
+services:
+  api:
+    image: entregaja/api:4.2
+    ports: ["443:443"]
+    environment:
+      DATABASE_URL: postgres://entrega:${DB_PASSWORD}@postgres:5432/entrega
+      REDIS_URL: redis://redis-geo:6379
+    networks: [borda, interna]
+
+  ws-tracking:
+    image: entregaja/ws:4.2
+    ports: ["8443:8443"]
+    networks: [borda, interna]
+
+  repasse-service:
+    image: entregaja/repasse:4.2
+    environment:
+      DATABASE_URL: postgres://repasse:${DB_PASSWORD}@postgres:5432/entrega
+    networks: [interna]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks: [interna]
+
+  redis-geo:
+    image: redis:7
+    networks: [interna]
+
+networks:
+  borda:
+  interna:
+    internal: true

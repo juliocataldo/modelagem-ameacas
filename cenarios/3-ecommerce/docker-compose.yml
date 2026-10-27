@@ -1,0 +1,41 @@
+# Documentação da arquitetura. Não é necessário subir os containers.
+services:
+  web:
+    image: lojaviva/web:2.0
+    ports: ["443:443"]
+    networks: [borda]
+
+  api:
+    image: lojaviva/api:2.0
+    environment:
+      DATABASE_URL: postgres://loja:${DB_PASSWORD}@postgres:5432/loja
+      AMQP_URL: amqp://app:${MQ_PASSWORD}@rabbitmq:5672
+      GATEWAY_SECRET: ${GATEWAY_SECRET}
+    networks: [borda, interna]
+
+  worker-pedidos:
+    image: lojaviva/worker:2.0
+    networks: [interna]
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports: ["15672:15672"]
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks: [borda, interna]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks: [interna]
+
+  redis:
+    image: redis:7
+    networks: [interna]
+
+networks:
+  borda:
+  interna:
+    internal: true

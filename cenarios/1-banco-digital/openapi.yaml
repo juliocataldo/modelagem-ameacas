@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info: { title: Coopera Pix API, version: "2.3" }
+components:
+  securitySchemes:
+    jwt: { type: http, scheme: bearer, bearerFormat: JWT }
+paths:
+  /v1/auth/login:
+    post:
+      summary: Login com CPF e senha; dispara OTP por SMS
+      security: []
+      responses: { "200": { description: Desafio de OTP criado } }
+  /v1/auth/otp:
+    post:
+      summary: Valida o OTP de 6 dígitos e devolve token de acesso (15 min) e refresh token
+      security: []
+      responses: { "200": { description: Tokens } }
+  /v1/contas/saldo:
+    get:
+      summary: Saldo da conta do usuário autenticado
+      security: [{ jwt: [] }]
+      responses: { "200": { description: Saldo } }
+  /v1/pix/transferencias:
+    post:
+      summary: Cria uma transferência Pix
+      security: [{ jwt: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                contaOrigemId: { type: integer }
+                chaveDestino: { type: string }
+                valor: { type: number }
+      responses: { "201": { description: Transferência em processamento } }
+  /v1/pix/spi/callback:
+    post:
+      summary: Callback do SPI com o resultado da liquidação (efetivada ou rejeitada)
+      security: []
+      responses: { "200": { description: Recebido } }
+  /v1/suporte/assumir-visao:
+    post:
+      summary: Agente de suporte assume a visão da conta de um associado
+      security: [{ jwt: [] }]
+      requestBody: { content: { application/json: { schema: { properties: { contaId: { type: integer } } } } } }
+      responses: { "200": { description: Token com a identidade do associado } }

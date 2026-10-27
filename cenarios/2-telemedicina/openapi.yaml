@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info: { title: VitaConsulta API, version: "3.1" }
+components:
+  securitySchemes:
+    sessao: { type: http, scheme: bearer }
+paths:
+  /v1/auth/login:
+    post:
+      summary: Login com e-mail e senha
+      security: []
+      responses: { "200": { description: Sessão (papel e id do usuário no token) } }
+  /v1/consultas/{id}/entrar:
+    post:
+      summary: Devolve o token de acesso à sala de vídeo da consulta
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Token de sala } }
+  /v1/prontuarios/{pacienteId}:
+    get:
+      summary: Lê o prontuário do paciente
+      description: Permitido a qualquer usuário com papel `medico`.
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Prontuário completo } }
+  /v1/exames:
+    post:
+      summary: Paciente envia um exame
+      security: [{ sessao: [] }]
+      responses: { "201": { description: Exame armazenado } }
+  /v1/exames/{id}/link:
+    post:
+      summary: Gera link pré-assinado para baixar o exame
+      description: O link expira em 604800 segundos (7 dias) e pode ser usado por qualquer pessoa que o receba.
+      security: [{ sessao: [] }]
+      responses: { "200": { description: URL do exame } }
+  /v1/admin/medicos:
+    post:
+      summary: Cadastra médico
+      security: [{ sessao: [] }]
+      responses: { "201": { description: Criado } }

@@ -1,0 +1,41 @@
+# Documentação da arquitetura. Não é necessário subir os containers.
+services:
+  web:
+    image: vita/web:3.1
+    ports: ["443:443"]
+    networks: [borda]
+
+  api:
+    image: vita/api:3.1
+    environment:
+      DATABASE_URL: postgres://vita:${DB_PASSWORD}@postgres-prontuario:5432/vita
+      MINIO_ENDPOINT: minio-exames:9000
+      VIDEO_API_KEY: ${VIDEO_API_KEY}
+    networks: [borda, interna]
+
+  vpn-gateway:
+    image: vita/vpn:1.4
+    ports: ["1194:1194/udp"]
+    networks: [borda, interna]
+
+  postgres-prontuario:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./dados:/var/lib/postgresql/data
+      - ./backup:/backup
+    networks: [interna]
+
+  minio-exames:
+    image: minio/minio
+    command: server /data
+    volumes: ["exames:/data"]
+    networks: [interna]
+
+networks:
+  borda:
+  interna:
+
+volumes:
+  exames:

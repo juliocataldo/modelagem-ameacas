@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info: { title: LojaViva API, version: "2.0" }
+components:
+  securitySchemes:
+    cliente: { type: http, scheme: bearer }
+    lojista: { type: http, scheme: bearer }
+paths:
+  /v1/carrinho/itens:
+    post:
+      summary: Adiciona item ao carrinho
+      security: [{ cliente: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                produtoId: { type: integer }
+                quantidade: { type: integer }
+                precoUnitario: { type: number }
+      responses: { "201": { description: Item adicionado } }
+  /v1/cupons/aplicar:
+    post:
+      summary: Aplica cupom de desconto ao carrinho
+      security: [{ cliente: [] }]
+      requestBody: { content: { application/json: { schema: { properties: { codigo: { type: string } } } } } }
+      responses: { "200": { description: Desconto aplicado } }
+  /v1/pedidos:
+    post:
+      summary: Finaliza o pedido com o token de pagamento do gateway
+      security: [{ cliente: [] }]
+      responses: { "201": { description: Pedido criado, aguardando pagamento } }
+  /v1/pagamentos/webhook:
+    post:
+      summary: Webhook do gateway; marca o pedido como pago
+      security: []
+      responses: { "200": { description: Recebido } }
+  /v1/lojista/pedidos:
+    get:
+      summary: Lista pedidos de uma loja
+      parameters: [{ name: lojaId, in: query, required: true, schema: { type: integer } }]
+      security: [{ lojista: [] }]
+      responses: { "200": { description: Pedidos da loja informada } }

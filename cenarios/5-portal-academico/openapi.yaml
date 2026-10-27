@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info: { title: Portal Horizonte API, version: "5.0" }
+components:
+  securitySchemes:
+    sessao: { type: http, scheme: bearer }
+paths:
+  /v1/auth/login:
+    post:
+      summary: Login via SSO legado (usuário e senha)
+      security: []
+      responses: { "200": { description: Sessão válida por 30 dias } }
+  /v1/alunos/{rm}/notas:
+    get:
+      summary: Notas do aluno pelo RM
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Notas e frequência } }
+  /v1/notas/{id}:
+    put:
+      summary: Corrige uma nota (secretaria)
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Nota atualizada } }
+  /v1/relatorios/alunos/exportar:
+    get:
+      summary: Exporta planilha com todos os alunos (RM, nome, CPF, e-mail, notas)
+      description: Disponível a qualquer usuário com papel `docente` ou `administrativo`.
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Arquivo CSV } }
+  /v1/auth/recuperar-senha:
+    post:
+      summary: Recuperação de senha
+      security: []
+      responses: { "200": { description: E-mail enviado } }

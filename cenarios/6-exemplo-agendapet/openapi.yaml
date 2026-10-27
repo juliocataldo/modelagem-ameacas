@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info: { title: AgendaPet API, version: "1.0" }
+components:
+  securitySchemes:
+    sessao: { type: http, scheme: bearer }
+paths:
+  /v1/login/solicitar:
+    post:
+      summary: Envia o link mágico por SMS ao telefone informado
+      requestBody: { content: { application/json: { schema: { properties: { telefone: { type: string } } } } } }
+      security: []
+      responses: { "202": { description: SMS enviado } }
+  /v1/login/validar:
+    get:
+      summary: Troca o token do link mágico por uma sessão
+      parameters: [{ name: token, in: query, schema: { type: string, description: "6 caracteres alfanuméricos" } }]
+      security: []
+      responses: { "200": { description: Sessão criada, válida por 12 h } }
+  /v1/agendamentos:
+    post:
+      summary: Cria agendamento
+      security: [{ sessao: [] }]
+      responses: { "201": { description: Criado } }
+  /v1/agendamentos/{id}:
+    get:
+      summary: Detalhe do agendamento (id inteiro sequencial)
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Agendamento com dados do tutor e do pet } }
+    delete:
+      summary: Cancela agendamento
+      security: [{ sessao: [] }]
+      responses: { "204": { description: Cancelado } }
+  /v1/tutores:
+    get:
+      summary: Busca tutores por nome (uso do atendente)
+      parameters: [{ name: nome, in: query, schema: { type: string } }]
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Lista com nome, telefone e endereço completos } }
+  /v1/sms/status:
+    post:
+      summary: Webhook do provedor de SMS com o status de entrega
+      security: []
+      responses: { "200": { description: Recebido } }
+  /v1/admin/relatorios:
+    get:
+      summary: Relatório de faturamento (tela do gerente)
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Relatório } }

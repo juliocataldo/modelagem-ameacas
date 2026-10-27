@@ -1,0 +1,37 @@
+# Documentação da arquitetura. Não é necessário subir os containers.
+services:
+  web:
+    image: agendapet/web:1.0
+    ports: ["443:443"]
+    networks: [publica]
+
+  api:
+    image: agendapet/api:1.0
+    ports: ["3000:3000"]
+    environment:
+      DATABASE_URL: postgres://agenda:${DB_PASSWORD}@db:5432/agendapet
+      SMS_API_KEY: ${SMS_API_KEY}
+      MINIO_ENDPOINT: storage:9000
+    networks: [publica, interna]
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes: ["dbdata:/var/lib/postgresql/data"]
+    networks: [interna]
+
+  storage:
+    image: minio/minio
+    command: server /data
+    volumes: ["fotos:/data"]
+    networks: [interna]
+
+networks:
+  publica:
+  interna:
+    internal: true
+
+volumes:
+  dbdata:
+  fotos:

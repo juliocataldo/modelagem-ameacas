@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info: { title: EntregaJá API, version: "4.2" }
+components:
+  securitySchemes:
+    sessao: { type: http, scheme: bearer }
+paths:
+  /v1/pedidos:
+    post:
+      summary: Cliente cria pedido
+      security: [{ sessao: [] }]
+      responses: { "201": { description: "Pedido criado (id inteiro sequencial)" } }
+  /v1/pedidos/{id}:
+    get:
+      summary: Detalhe e status do pedido
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Pedido, itens, endereço, telefones } }
+  /v1/restaurante/pedidos/{id}/itens/{itemId}:
+    put:
+      summary: Restaurante altera o preço de um item do pedido
+      security: [{ sessao: [] }]
+      requestBody: { content: { application/json: { schema: { properties: { preco: { type: number } } } } } }
+      responses: { "200": { description: Atualizado } }
+  /v1/entregador/corridas/{id}/concluir:
+    post:
+      summary: Entregador conclui a corrida e informa a distância percorrida
+      security: [{ sessao: [] }]
+      requestBody: { content: { application/json: { schema: { properties: { distanciaKm: { type: number } } } } } }
+      responses: { "200": { description: Corrida concluída; repasse agendado } }
+  /v1/pedidos/{id}/cancelar:
+    post:
+      summary: Cancela o pedido
+      security: [{ sessao: [] }]
+      responses: { "200": { description: Cancelado } }
+# WebSocket (ws-tracking): wss://:8443/rastreio
+#   - o cliente envia { "assinar": "pedido:{id}" } e recebe a posição do entregador a cada 5 s

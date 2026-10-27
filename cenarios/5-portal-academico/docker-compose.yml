@@ -1,0 +1,46 @@
+# Documentação da arquitetura. Não é necessário subir os containers.
+services:
+  portal-web:
+    image: horizonte/portal:5.0
+    ports: ["443:443"]
+    networks: [borda]
+
+  api:
+    image: horizonte/api:5.0
+    environment:
+      DATABASE_URL: postgres://portal:${DB_PASSWORD}@postgres:5432/portal
+      LDAP_URL: ldap://sso-legado:389
+      SESSION_TTL_DIAS: "30"
+    networks: [borda, interna]
+
+  sso-legado:
+    image: horizonte/sso-legado:1.0
+    networks: [interna]
+
+  importador-notas:
+    image: horizonte/importador:5.0
+    environment:
+      DATABASE_URL: postgres://portal:${DB_PASSWORD}@postgres:5432/portal
+    volumes: ["pasta-notas:/entrada"]
+    networks: [interna]
+
+  smb-share:
+    image: dperson/samba
+    command: -s "notas;/entrada;yes;no;no;docentes;docentes"
+    volumes: ["pasta-notas:/entrada"]
+    ports: ["445:445"]
+    networks: [borda, interna]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks: [interna]
+
+networks:
+  borda:
+  interna:
+    internal: true
+
+volumes:
+  pasta-notas:
