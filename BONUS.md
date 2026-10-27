@@ -1,10 +1,10 @@
 # Bônus: conteúdo de apoio
 
-Material **opcional e sem nota** para aprofundar. Não confunda com o bônus de pontos do trabalho (o modelo no Threat Dragon, descrito no `README.md`).
+Material para aprofundar.
 
 - A maior parte do conteúdo está **em inglês**.
 - Fonte da lista: [awesome-threat-modelling](https://github.com/hysnsec/awesome-threat-modelling) (hysnsec), mantida pela comunidade.
-- Os links foram testados em 27/10/2026. Alguns sites bloqueiam testes automáticos e podem pedir cookies ou login. Se um link não abrir, avise o professor.
+- Os links foram testados em 2026. Alguns sites bloqueiam testes automáticos e podem pedir cookies ou login. 
 - Pode haver ferramentas e conteúdos desatualizados. Avalie a manutenção antes de usar algo em projeto real.
 
 ## Fundamentos e manifesto
