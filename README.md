@@ -60,6 +60,17 @@ Média: **Baixo** (< 4), **Médio** (4 a 6,9), **Alto** (≥ 7).
 
 Se ainda não fez, refaça o [lab OrbitaPay](https://github.com/juliocataldo/threat-modeling-lab) para aquecer.
 
+## Bônus: conteúdo de apoio
+
+Material **opcional e sem nota** para aprofundar (não é o bônus de pontos do Threat Dragon). Quase tudo está em inglês.
+
+- **Fundamentos e manifesto:** [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/)
+- **Comece por aqui:**
+  - [OWASP Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
+  - [OWASP Threat Modeling Process](https://owasp.org/www-community/Threat_Modeling_Process)
+  - [OWASP Threat Model Cookbook](https://github.com/OWASP/threat-model-cookbook) (exemplos de modelos prontos)
+- **Lista completa**, com vídeos, tutoriais e artigos, exemplos de threat models e ferramentas: [`BONUS.md`](BONUS.md)
+
 ## Combinados
 
 - Tudo aqui é fictício. **Não teste nada contra sistemas reais.**
